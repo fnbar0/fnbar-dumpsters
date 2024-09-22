@@ -1,5 +1,5 @@
 Config = {}
-Config.Locale = 'pl' -- en/pl
+Config.Locale = 'en' -- en/pl
 Config.Framework = 'ESX' -- Right now works only with ESX.
 Config.SearchTime = 5000 -- Time in miliseconds to search the dumpster.
 Config.Target = 'qtarget' -- ox_target/qtarget
