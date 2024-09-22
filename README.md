@@ -14,7 +14,7 @@ FiveM lua script that allows players to search dumpsters all around the map.
 |----------|-------------|----------|
 | ox_lib | Used for the progressbar while searching dumpster. | https://github.com/overextended/ox_lib |
 | ESX | Framework handling inventory items and money accounts. | https://github.com/esx-framework/esx_core |
-| ox_target/qtarget | Resources that allow to target specific dumpster entity. | https://github.com/overextended/qtarget https://github.com/overextended/ox_target |
+| ox_target/qtarget | Resources that allow to target specific dumpster entity and interact with it. | https://github.com/overextended/qtarget https://github.com/overextended/ox_target |
 
 ## Features
 - Highly configurable
