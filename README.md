@@ -14,7 +14,10 @@ FiveM lua script that allows players to search dumpsters all around the map.
 | ESX | Framework handling inventory items and money accounts. | https://github.com/esx-framework/esx_core |
 | ox_target/qtarget | Resources that allow to target specific dumpster entity. | https://github.com/overextended/qtarget https://github.com/overextended/ox_target |
 
-
+## Features
+- Highly configurable
+- You can add/remove dumpster props, items and chances to get them
+- Uses rarity system that is easy to manage
 ## Configuration
 
 In config file you can set bunch of things, like chances, language or search time.
