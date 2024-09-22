@@ -1,7 +1,7 @@
 local ESX = exports["es_extended"]:getSharedObject()
 local SearchedDumpsters = {}
 local ped = PlayerPedId()
-for i,dumpsterModel in ipairs(Config.DumpsterProps) do    
+for i, dumpsterModel in ipairs(Config.DumpsterProps) do    
     if Config.Target == "qtarget" then
         exports.qtarget:AddTargetModel(joaat(dumpsterModel), {
             options = {
