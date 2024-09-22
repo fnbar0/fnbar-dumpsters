@@ -18,9 +18,10 @@ FiveM lua script that allows players to search dumpsters all around the map.
 - Highly configurable
 - You can add/remove dumpster props, items and chances to get them
 - Uses rarity system that is easy to manage
-- Lightweight and well optimized  
+- Lightweight and well optimized
+- Comes with 2 translations to choose from Polish/English, but you can easily add new one
 
 ## Configuration
 
 In config file you can set bunch of things, like chances, language or search time.
-To add new language simply go to `locales.lua` and add new language just like the other ones are included. Then go to config.lua and change locale to the one you just made.
+To add new language simply go to `locales.lua` and add new language just like the other ones that are included. Then go to `config.lua` and change locale to the one you just made.
