@@ -7,24 +7,7 @@ for i, dumpsterModel in ipairs(Config.DumpsterProps) do
             options = {
                     {
                         action = function(data)
-                            entity = data.entity
-                            if DoesEntityExist(entity) then
-                                local alreadySearched = false
-                                for _, searchedEntity in ipairs(SearchedDumpsters) do
-                                    if searchedEntity == entity then
-                                        alreadySearched = true
-                                        break
-                                    end
-                                end
-                                if alreadySearched then 
-                                    return ESX.ShowNotification(locales[Config.Locale].AlreadySearched)
-                                end
-                                if not searching then 
-                                    SearchDumpster(entity)
-                                else 
-                                    ESX.ShowNotification(locales[Config.Locale].CantNow)
-                                end
-                            end
+                            CheckDumpster(data)
                         end,
                         icon = "fa-solid fa-dumpster",
                         label = locales[Config.Locale].SearchDumpster,
@@ -37,29 +20,33 @@ for i, dumpsterModel in ipairs(Config.DumpsterProps) do
         exports.ox_target:addModel(joaat(dumpsterModel), {
              {
                 onSelect = function(data)
-                    entity = data.entity
-                    if DoesEntityExist(entity) then
-                        local alreadySearched = false
-                        for _, searchedEntity in ipairs(SearchedDumpsters) do
-                            if searchedEntity == entity then
-                                alreadySearched = true
-                                break
-                            end
-                        end
-                        if alreadySearched then 
-                            return ESX.ShowNotification(locales[Config.Locale].AlreadySearched)
-                        end
-                        if not searching then 
-                            SearchDumpster(entity)
-                        else 
-                            ESX.ShowNotification(locales[Config.Locale].CantNow)
-                        end
-                    end
+                    CheckDumpster(data)
                 end,
                 icon = "fa-solid fa-dumpster",
                 label = locales[Config.Locale].SearchDumpster,
              }
         })
+    end
+end
+
+function CheckDumpster(data)
+    entity = data.entity
+    if DoesEntityExist(entity) then
+        local alreadySearched = false
+        for _, searchedEntity in ipairs(SearchedDumpsters) do
+            if searchedEntity == entity then
+                alreadySearched = true
+                break
+            end
+        end
+        if alreadySearched then 
+            return ESX.ShowNotification(locales[Config.Locale].AlreadySearched)
+        end
+        if not searching then 
+            SearchDumpster(entity)
+        else 
+            ESX.ShowNotification(locales[Config.Locale].CantNow)
+        end
     end
 end
 
