@@ -1,6 +1,8 @@
 # fnbar-dumpsters
 FiveM lua script that allows players to search dumpsters all around the map.
 
+## Video showcase
+- [Youtube Video](https://www.youtube.com/watch?v=9JiY8Lqqz4I)
 
 ## Resource Installation
 * Download the repository
