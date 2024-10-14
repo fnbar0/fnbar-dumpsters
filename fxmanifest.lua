@@ -1,4 +1,3 @@
-lua "5.4"
 fx_version "cerulean"
 game "gta5"
 author "fnbar"
