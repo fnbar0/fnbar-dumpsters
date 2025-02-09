@@ -2,7 +2,7 @@ Config = {}
 Config.Locale = 'en' -- en/pl
 Config.Framework = 'ESX' -- Right now works only with ESX.
 Config.SearchTime = 5000 -- Time in miliseconds to search the dumpster.
-Config.Target = 'qtarget' -- ox_target/qtarget
+Config.Target = 'ox_target' -- ox_target/qtarget
 Config.FindChance = 100 -- Chance to find anything in dumpster.
 
 Config.Rarities = { -- You can change chance of getting these rarities after succesfully searching dumpster and items that can drop, aswell their quantities.
@@ -46,6 +46,7 @@ Config.DumpsterProps = { -- List of targetable props that can be searched. I sug
 	"prop_dumpster_02a",
 	"prop_dumpster_4a",
 	"prop_bin_08a",
+    "prop_dumpster_02b",
 	"prop_dumpster_4b"
 }
 

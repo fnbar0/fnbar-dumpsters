@@ -1,6 +1,8 @@
 local ESX = exports["es_extended"]:getSharedObject()
 local SearchedDumpsters = {}
 local ped = PlayerPedId()
+local searching = false
+
 for i, dumpsterModel in ipairs(Config.DumpsterProps) do    
     if Config.Target == "qtarget" then
         exports.qtarget:AddTargetModel(joaat(dumpsterModel), {
@@ -24,6 +26,7 @@ for i, dumpsterModel in ipairs(Config.DumpsterProps) do
                 end,
                 icon = "fa-solid fa-dumpster",
                 label = locales[Config.Locale].SearchDumpster,
+                distance = 2
              }
         })
     end
@@ -52,10 +55,11 @@ end
 
 function SearchDumpster(entity)
     searching = true
-    table.insert(SearchedDumpsters,entity)
+    ped = PlayerPedId()
+    table.insert(SearchedDumpsters, entity)
     TaskStartScenarioInPlace(ped, "PROP_HUMAN_BUM_SHOPPING_CART", 0, true)
     Citizen.Wait(100)
-    FreezeEntityPosition(ped,true)
+    FreezeEntityPosition(ped, true)
     if lib.progressBar({
         duration = Config.SearchTime,
         label = locales[Config.Locale].SearchingDumpster,
@@ -66,17 +70,20 @@ function SearchDumpster(entity)
         },
     }) 
     then   
-        ESX.TriggerServerCallback("dumpsterCallback", function(found, item, quantity)
-            if found then
-                ESX.ShowNotification(string.format("%s%dx %s", locales[Config.Locale].Found, quantity, item))
-            else
-                ESX.ShowNotification(locales[Config.Locale].FoundNothing)
-            end
-        end)
+        local netid = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
+        if not netid then
+            NetworkRegisterEntityAsNetworked(entity)
+            SetEntityAsMissionEntity(entity, true, true)
+            netid = NetworkGetNetworkIdFromEntity(entity)
+        end 
+        Wait(100)
+        if netid then 
+            TriggerServerEvent("fnbar-dumpster:searchedDumpster", netid)
+        end 
     else 
         ESX.ShowNotification(locales[Config.Locale].Cancelled)
     end
-    FreezeEntityPosition(ped,false)
     searching = false
+    FreezeEntityPosition(ped, false)
     ClearPedTasks(ped)
 end

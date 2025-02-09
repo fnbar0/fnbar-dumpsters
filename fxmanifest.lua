@@ -6,16 +6,16 @@ version "1.0"
 lua54 'yes'
 
 client_scripts {
-    "config.lua",     
-    "locales.lua",   
     "client/main.lua" 
 }
 
-server_scripts {
-    "config.lua",    
-    "locales.lua",    
+server_scripts {   
     "server/main.lua" 
 }
 
-shared_script '@ox_lib/init.lua'
+shared_scripts {
+    '@ox_lib/init.lua',
+    "locales.lua",
+    "config.lua"
+}
 
